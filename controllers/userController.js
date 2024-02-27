@@ -81,4 +81,36 @@ exports.login  = async (req,res)=>{
           res.status(401).json(`login request failed due to ${err} ` )
 }
 }  
-    
+exports.profileUpdate = async(req,res)=>{
+  const {id} = req.params
+    console.log("inside update");
+    console.log(req.params);
+    const { } = req.payload
+    const {username,email,password,instagram,phone,height,weight,profile} = req.body
+    const uploadedProjectImage = req.file.filename
+
+
+
+    try{
+      const updateProfile = await users.findByIdAndUpdate({_id:id},{instagram,phone,height,weight,profile:uploadedProjectImage},{new:true})
+
+      await updateProfile.save()
+      res.status(200).json(updateProfile)
+
+  }catch(err){
+      res.status(401).json(err)
+  }
+}
+
+exports.getallusers=async(req,res)=>{
+  
+  
+      try{
+          const allusers=await users.find()
+          res.status(200).json(allusers)
+      }
+      catch(err){
+          res.status(401).json(`request failed due to :${err}`)
+      }
+      
+      }

@@ -33,7 +33,15 @@ const userSchema = new mogoose.Schema({
     instagram:{
         type:String
     },
-    profile:{
+    phone:{
+        type:Number
+    },
+    height:{
+        type:Number
+    },
+    weight:{
+        type:Number
+    },profile:{
         type:String
     }
 

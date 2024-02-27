@@ -35,6 +35,8 @@ router.post('/user/register', userController.register)
  router.get('/plan/details/:id',jwtMiddleware,workourController.getdetails)
 
  router.delete('/plans/deleteplay/:id',jwtMiddleware,workourController.deletePlan)
+ router.put('/user/update/:id',jwtMiddleware,multerMiddleware.single('profile'),userController.profileUpdate)
+ router.get('/users/allusers',jwtMiddleware,userController.getallusers)
 
 
 // 4) export router

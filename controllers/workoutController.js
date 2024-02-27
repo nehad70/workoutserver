@@ -31,15 +31,9 @@ catch(err){
 exports.getallplan=async(req,res)=>{
     const search=req.query.search
     console.log(search);
-    const query={
-        // regular expression,i-rmv casesensitivity
-        title:{
-            $regex:search,$options:'i'
     
-        }
-    }
         try{
-            const allplan=await plans.find(query)
+            const allplan=await plans.find()
             res.status(200).json(allplan)
         }
         catch(err){
@@ -71,4 +65,4 @@ exports.getallplan=async(req,res)=>{
                     }catch(err){
                         res.status(401).json(err)
                     }
-                }    
+                }
